@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "homestead": "fulton-homestead",
+    "demo": "fulton-homestead"
+  }
+}
