@@ -5,7 +5,7 @@
       <div class="usa-alert usa-alert-success" >
         <div class="usa-alert-body">
           <h3 class="usa-alert-heading">Great job!</h3>
-          <p class="usa-alert-text">You're all done</p>
+          <p class="usa-alert-text">You're all done.</p>
         </div>
       </div>
 
@@ -14,7 +14,7 @@
         <ul>
           <li>We've submitted your application to Fulton County.</li>
           <li>If you provided an email address, you'll receive a PDF copy of your application.</li>
-          <li>You may contact Atlanta Legal Aid if you have any further questions.</li>
+          <li>You may call Atlanta Legal Aid (404-524-5811) if you have any further questions.</li>
         </ul>
       </p>
       <a href="/"><button class="usa-button-big">Go Back to the Start</button></a>

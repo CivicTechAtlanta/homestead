@@ -3,7 +3,7 @@
     <form class="usa-form-large" v-on:submit.prevent="onSubmit">
       <fieldset>
         <legend>Property Address</legend>
-        <p class="description">The property you are claming exemption on. You must have resided on this property on January 1.</p>
+        <p class="description">Your home in Fulton County. You must have resided here on January 1 of this year.</p>
 
         <label for="property-street-address-1">Street Address 1</label>
         <input id="property-street-address-1" name="property-street-address-1" type="text">
