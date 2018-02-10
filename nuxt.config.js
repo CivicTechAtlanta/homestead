@@ -1,9 +1,11 @@
+const resolve = require('path').resolve;
+
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    title: 'homestead',
+    title: 'Fulton County Homestead Exemption Application',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -13,6 +15,16 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  css: [
+    '@/node_modules/uswds/src/stylesheets/_all.scss'
+  ],
+  modules: [
+    'nuxt-sass-resources-loader'
+  ],
+  sassResources: [
+    resolve(__dirname, 'node_modules/uswds/src/stylesheets/lib/_bourbon.scss'),    
+    resolve(__dirname, 'node_modules/uswds/src/stylesheets/core/_variables.scss')
+  ],
   /*
   ** Customize the progress bar color
   */

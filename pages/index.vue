@@ -1,64 +1,34 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
-      <h1 class="title">
-        homestead
-      </h1>
-      <h2 class="subtitle">
-        Fulton County Homestead Exemption Application
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <h1 class="usa-heading">Apply for the Fulton County Homestead Exemption</h1>
+
+      <p><img class="smile-image" src="~/assets/couple.jpg" align="right" width="250"/>Fulton County homeowners are entitled to a homestead tax exemption on their home property.</p>
+        
+      <p>To apply, you must own your home and it must have been your legal residence as of January 1 of this year.</p>
+
+      <p>Once granted, the exemption is automatically renewed each year as long as you continue to own the home and reside in it.</p>
+      
+      <p>
+        <strong>In order to complete this application</strong>, you will need pictures or scanned copies of these documents:
+        <ul>
+          <li>A state-issued identification card or driver's license.</li>
+          <li>A vehicle registration card for every vehicle registered at your home.</li>
+        </ul>
+        <strong>Please take a moment to gather those documents.</strong> If you're on a phone or tablet, you can take a clear photo of each document.
+      </p>
+
+      <p>This application form takes 10 minutes to fill out.</p>
+
+      <a href="/parcel"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 
-export default {
-  components: {
-    AppLogo
-  }
-}
 </script>
 
 <style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
