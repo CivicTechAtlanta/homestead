@@ -2,7 +2,7 @@
   <div class="usa-grid main-content">
     <div class="usa-width-one-whole">
       <header class="usa-banner-header">
-        <p>This free service is a collaboration between <a href="http://www.codeforatlanta.org" target="_blank">Code for Atlanta</a> and <a href="https://www.atlantalegalaid.org" target="_blank">Atlanta Legal Aid Society</a>.</p>
+        <p>This free service is provided by <a href="http://www.codeforatlanta.org" target="_blank">Code for Atlanta</a> and <a href="https://www.atlantalegalaid.org" target="_blank">Atlanta Legal Aid Society</a>.</p>
       </header>
       <nuxt/>
     </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-export default {  
+export default {
   next(location) {
     window.location.href = `/${location}`;
   }
