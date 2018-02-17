@@ -40,6 +40,7 @@ export default {
 
   .main-content {
     max-width: 64rem;
+    min-height: 100vh;
     background-color: white;
   }
   p.description {
