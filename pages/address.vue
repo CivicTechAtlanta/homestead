@@ -85,18 +85,6 @@
         <label for="property-zip">ZIP Code</label>
         <input class="usa-input-medium" id="property-zip" name="property-zip" type="text" pattern="[\d]{5}(-[\d]{4})?">
 
-        <p>Do you claim homestead on any other properties?</p>
-        <ul class="usa-unstyled-list">
-          <li>
-            <input id="other-properties-yes" type="radio"  name="other-properties" value="yes">
-            <label for="other-properties-yes">Yes</label>
-          </li>
-          <li>
-            <input id="other-properties-no" type="radio" name="other-properties" value="no">
-            <label for="other-properties-no">No</label>
-          </li>
-        </ul>
-
         <button v-on:click="next()" id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
