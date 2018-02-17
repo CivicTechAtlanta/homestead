@@ -34,10 +34,6 @@ export default {
     padding-top: 20px;
   }
 
-  fieldset {
-    margin-bottom: 30px;
-  }
-
   .main-content {
     max-width: 64rem;
     min-height: 100vh;
