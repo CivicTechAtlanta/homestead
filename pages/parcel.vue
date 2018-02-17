@@ -3,13 +3,14 @@
     <form class="usa-form-large" v-on:submit.prevent="onSubmit">
       <fieldset>
         <legend>Find Your Parcel Number</legend>
-        <p>Your home's parcel number is set by Fulton County.</p>
+        <p>Your home's parcel number is set by Fulton County and is usually 14 digits long.</p>
+
         <div class="usa-alert usa-alert-info" >
           <div class="usa-alert-body">
             <h3 class="usa-alert-heading">There are three ways to find your parcel number.</h3>
             <p class="usa-alert-text">
               <ul>
-                <li>Use <a href="http://qpublic9.qpublic.net/ga_search_dw.php?county=ga_fulton" target="_blank">Fulton County's official search tool</a>.</li>
+                <li>Use <a href="http://qpublic9.qpublic.net/ga_search_dw.php?county=ga_fulton" target="_blank">Fulton County's official search tool</a>. <img src="~/assets/parcel-id-example.png" /></li>
                 <li>It's on your Annual Notice of Assessment.</li>
                 <li>It's on your property tax bill.</li>
               </ul>
