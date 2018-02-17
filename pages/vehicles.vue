@@ -51,7 +51,7 @@
 module.exports = {
   methods: {
     next(location) {
-      window.location.href = '/signature';
+      window.location.href = '/documents';
     }
   }
 }
