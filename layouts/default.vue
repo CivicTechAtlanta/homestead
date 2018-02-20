@@ -35,7 +35,7 @@ export default {
   }
 
   .main-content {
-    max-width: 64rem;
+    max-width: 60rem;
     min-height: 100vh;
     background-color: white;
   }
