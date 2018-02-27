@@ -1,29 +1,29 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" v-on:submit.prevent="onSubmit">
+    <form class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Home Owner</legend>
         <p></p>
         <label for="owner-first-name">First Name</label>
-        <input id="owner-first-name" name="owner-first-name" type="text" required="" aria-required="true">
+        <input id="owner-first-name" name="owner-first-name" type="text" v-model="ownerFirstName" required="" aria-required="true">
 
         <label for="owner-middle-name" class="usa-input-optional">Middle Name</label>
-        <input id="owner-middle-name" name="owner-middle-name" type="text">
+        <input id="owner-middle-name" name="owner-middle-name" v-model="ownerMiddleName" type="text">
 
         <label for="owner-last-name">Last Name</label>
-        <input id="owner-last-name" name="owner-last-name" type="text" required="" aria-required="true">
+        <input id="owner-last-name" name="owner-last-name" v-model="ownerLastName" type="text" required="" aria-required="true">
 
         <label for="owner-email">Email Address</label>
-        <input id="owner-email" name="owner-email" type="text" required="" aria-required="true">
+        <input id="owner-email" name="owner-email" v-model="ownerEmail" type="text" required="" aria-required="true">
 
         <label for="owner-phone">Phone Number</label>
-        <input id="owner-phone" name="owner-phone" type="text" required="" aria-required="true">
+        <input id="owner-phone" name="owner-phone" v-model="ownerPhone" type="text" required="" aria-required="true">
 
         <label for="owner-ssn">Last 4 Digits of Social Security Number</label>
-        <input class="usa-input-medium" id="owner-ssn" name="owner-ssn" type="text" required="" aria-required="true">
+        <input class="usa-input-medium" id="owner-ssn" name="owner-ssn" v-model="ownerSsn" type="text" required="" aria-required="true" maxlength="4">
 
           <label for="owner-state">Legal State of Residence</label>
-          <select id="owner-state" name="owner-state">
+          <select id="owner-state" name="owner-state" v-model="ownerState">
             <option value>- Select -</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -86,20 +86,39 @@
 
         <p>Upload a picture or scanned copy of a state-issued identification card or driver's license.</p>
         <input name="owner-id-upload" type="file">
-        <button v-on:click="next()" id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>
 </template>
 
 <script>
-module.exports = {
-  methods: {
-    next(location) {
-      window.location.href = '/spouse';
+  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+
+  const fields = {
+    'ownerFirstName': '',
+    'ownerMiddleName': '',
+    'ownerLastName': '',
+    'ownerEmail': '',
+    'ownerPhone': '',
+    'ownerState': 'GA',
+    'ownerSsn': ''
+  }
+
+  export default {
+    data() {
+      return fields;
+    },
+    mounted() {
+      fillFields(fields, this);
+    },
+    methods: {
+      saveData() {
+        const nextPage = '/spouse'
+        saveFieldsAndNext(fields, this, nextPage);
+      }
     }
   }
-}
 </script>
 
 <style>

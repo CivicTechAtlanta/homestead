@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" v-on:submit.prevent="onSubmit">
+    <form class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Mailing Address</legend>
         <div class="usa-alert usa-alert-info" >
@@ -10,20 +10,20 @@
           </div>
         </div>
         <label for="mailing-address-1">Street address 1</label>
-        <input id="mailing-address-1" name="mailing-address-1" type="text">
+        <input id="mailing-address-1" name="mailing-address-1" v-model="mailingStreetAddress1" type="text" >
 
         <label for="mailing-address-2" class="usa-input-optional">Street address 2</label>
-        <input id="mailing-address-2" name="mailing-address-2" type="text">
+        <input id="mailing-address-2" name="mailing-address-2" v-model="mailingStreetAddress2" type="text">
 
         <div>
           <div class="usa-input-grid usa-input-grid-medium">
             <label for="mailing-city">City</label>
-            <input id="mailing-city" name="mailing-city" type="text">
+            <input id="mailing-city" name="mailing-city" v-model="mailingCity" type="text">
           </div>
 
           <div class="usa-input-grid usa-input-grid-small">
             <label for="mailing-state">State</label>
-            <select id="mailing-state" name="mailing-state">
+            <select id="mailing-state" name="mailing-state" v-model="mailingState">
               <option value>- Select -</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -87,23 +87,38 @@
         </div>
 
         <label for="mailing-zip">ZIP Code</label>
-        <input class="usa-input-medium" id="mailing-zip" name="mailing-zip" type="text" pattern="[\d]{5}(-[\d]{4})?">
-
-
-        <button v-on:click="next()" id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <input class="usa-input-medium" id="mailing-zip" name="mailing-zip" v-model="mailingZip" type="text">
+        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>
 </template>
 
 <script>
-module.exports = {
-  methods: {
-    next(location) {
-      window.location.href = '/vehicles';
+  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+
+  const fields = {
+    'mailingStreetAddress1': '',
+    'mailingStreetAddress2': '',
+    'mailingCity': '',
+    'mailingState': 'GA',
+    'mailingZip': ''
+  }
+
+  export default {
+    data() {
+      return fields;
+    },
+    mounted() {
+      fillFields(fields, this);
+    },
+    methods: {
+      saveData() {
+        const nextPage = '/vehicles'
+        saveFieldsAndNext(fields, this, nextPage);
+      }
     }
   }
-}
 </script>
 
 <style>

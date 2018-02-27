@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" v-on:submit.prevent="onSubmit">
+    <form class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Find Your Parcel Number</legend>
         <p>Your home's parcel number is set by Fulton County and is usually 14 digits long.</p>
@@ -18,22 +18,31 @@
           </div>
         </div>
         <label for="parcel-number">Parcel Number</label>
-        <input id="parcel-number" name="parcel-number" type="text">
+        <input id="parcel-number" name="parcel-number" type="text" v-model="parcelNumber">
 
-        <button v-on:click="next()" id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>
 </template>
 
 <script>
-module.exports = {
-  methods: {
-    next(location) {
-      window.location.href = '/address';
+  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+  const fields = { 'parcelNumber': '' };
+  export default {
+    data() {
+      return fields;
+    },
+    mounted() {
+      fillFields(fields, this);
+    },
+    methods: {
+      saveData() {
+        const nextPage = '/address'
+        saveFieldsAndNext(fields, this, nextPage);
+      }
     }
   }
-}
 </script>
 
 <style>

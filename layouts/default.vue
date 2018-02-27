@@ -10,11 +10,7 @@
 </template>
 
 <script>
-export default {
-  next(location) {
-    window.location.href = `/${location}`;
-  }
-}
+
 </script>
 
 <style lang="scss">

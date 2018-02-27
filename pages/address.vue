@@ -1,25 +1,25 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" v-on:submit.prevent="onSubmit">
+    <form class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Property Address</legend>
         <p class="description">Your home in Fulton County. You must have resided here on January 1 of this year.</p>
 
         <label for="property-street-address-1">Street Address 1</label>
-        <input id="property-street-address-1" name="property-street-address-1" type="text">
+        <input id="property-street-address-1" name="property-street-address-1" type="text" v-model="propertyStreetAddress1">
 
         <label for="property-street-address-2" class="usa-input-optional">Street Address 2</label>
-        <input id="property-street-address-2" name="property-street-address-2" type="text">
+        <input id="property-street-address-2" name="property-street-address-2" type="text" v-model="propertyStreetAddress2">
 
         <div>
           <div class="usa-input-grid usa-input-grid-medium">
             <label for="property-city">City</label>
-            <input id="property-city" name="property-city" type="text">
+            <input id="property-city" name="property-city" type="text" v-model="propertyCity">
           </div>
 
           <div class="usa-input-grid usa-input-grid-small">
             <label for="property-state">State</label>
-            <select id="property-state" name="property-state">
+            <select id="property-state" name="property-state" v-model="propertyState">
               <option value>- Select -</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -83,22 +83,39 @@
         </div>
 
         <label for="property-zip">ZIP Code</label>
-        <input class="usa-input-medium" id="property-zip" name="property-zip" type="text" pattern="[\d]{5}(-[\d]{4})?">
+        <input class="usa-input-medium" id="property-zip" name="property-zip" type="text" v-model="propertyZip" pattern="[\d]{5}(-[\d]{4})?">
 
-        <button v-on:click="next()" id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>
 </template>
 
 <script>
-module.exports = {
-  methods: {
-    next(location) {
-      window.location.href = '/owner';
+  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+
+  const fields = {
+    'propertyStreetAddress1': '',
+    'propertyStreetAddress2': '',
+    'propertyCity': '',
+    'propertyState': 'GA',
+    'propertyZip': ''
+  }
+
+  export default {
+    data() {
+      return fields;
+    },
+    mounted() {
+      fillFields(fields, this);
+    },
+    methods: {
+      saveData() {
+        const nextPage = '/owner'
+        saveFieldsAndNext(fields, this, nextPage);
+      }
     }
   }
-}
 </script>
 
 <style>

@@ -22,8 +22,11 @@ module.exports = {
     'nuxt-sass-resources-loader'
   ],
   sassResources: [
-    resolve(__dirname, 'node_modules/uswds/src/stylesheets/lib/_bourbon.scss'),    
+    resolve(__dirname, 'node_modules/uswds/src/stylesheets/lib/_bourbon.scss'),
     resolve(__dirname, 'node_modules/uswds/src/stylesheets/core/_variables.scss')
+  ],
+  plugins: [
+    { src: '~/plugins/vue-cookie', ssr: false }
   ],
   /*
   ** Customize the progress bar color
@@ -45,6 +48,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['vue-cookie']
   }
 }

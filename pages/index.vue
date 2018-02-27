@@ -27,13 +27,20 @@
 
       <p>This application takes less than 10 minutes to fill out.</p>
 
-      <a href="/parcel"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
+      <a href="/verify"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
     </div>
   </section>
 </template>
 
 <script>
+  import { auth } from "~/lib/firebase"
 
+  export default {
+    mounted () {
+      auth.signOut();
+      this.$cookie.delete('userId');
+    }
+  }
 </script>
 
 <style>
