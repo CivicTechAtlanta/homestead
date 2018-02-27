@@ -13,11 +13,7 @@
             <input id="consent" type="checkbox" name="consent" v-model="consent" value="yes">
             <label for="consent">By checking this box I consent to share the information in this application with Code for Atlanta and Atlanta Legal Aid Society, Inc. This information is for the purpose of applying for the Fulton County Homestead Exemption and will only be used to that end. I understand that my information will not be shared with any other persons, organizations, or interests unless required by law.</label>
           </li>
-        </ul>
-
-        <ul class="usa-unstyled-list">
           <li>
-            <input id="shareEmail" type="hidden" name="shareEmail" v-model="shareEmail" value="no">
             <input id="shareEmail" type="checkbox" name="shareEmail" v-model="shareEmail" value="yes">
             <label for="shareEmail">I am working with Atlanta Legal Aid and would like a copy of this application to be shared with Atlanta Legal Aid Society. I understand that copying the application to Atlanta Legal Aid does not establish or guarantee current or future representation.</label>
           </li>
@@ -30,12 +26,13 @@
 </template>
 
 <script>
-  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+  import { fillFields, saveFieldsAndNext, serverTimestamp } from "~/lib/firebase"
 
   const fields = {
     'signature': '',
     'consent': '',
-    'shareEmail': ''
+    'shareEmail': '',
+    'signedAt': serverTimestamp
   }
 
   export default {
