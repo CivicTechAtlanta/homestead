@@ -5,7 +5,7 @@
 
       <div class="usa-alert usa-alert-error" role="alert">
         <div class="usa-alert-body"><h3 class="usa-alert-heading">Under Construction</h3>
-        <p class="usa-alert-text">This tools is under active development. Visit the <a href="http://fultonassessor.org/exemptions/">Fulton County Assessors site</a> to apply for the Homestead Exemption.</p>
+        <p class="usa-alert-text">This tool is under active development. Visit the <a href="http://fultonassessor.org/exemptions/">Fulton County Assessors site</a> to apply for the Homestead Exemption.</p>
         </div>
       </div>
 
@@ -18,7 +18,7 @@
       <div class="usa-alert usa-alert-warning" >
         <div class="usa-alert-body">
           <h3 class="usa-alert-heading">Claiming a special exemption?</h3>
-          <p class="usa-alert-text">Senior citizen exemptions (and all other special exemptions) must be applied for in person at a <a href="https://www.qpublic.net/ga/fulton/contact.html">Fulton County Board of Assessors office</a>.</p>
+          <p class="usa-alert-text">Senior citizen exemptions (and all other special exemptions) must be applied for in person at a <a href="http://fultonassessor.org/exemptions/">Fulton County Board of Assessors office</a>.</p>
         </div>
       </div>
 
