@@ -3,6 +3,12 @@
     <div>
       <h1 class="usa-heading">Apply for the Fulton County Homestead Exemption</h1>
 
+      <div class="usa-alert usa-alert-error" role="alert">
+        <div class="usa-alert-body"><h3 class="usa-alert-heading">Under Construction</h3>
+        <p class="usa-alert-text">This tools is under active development. Visit the <a href="http://fultonassessor.org/exemptions/">Fulton County Assessors site</a> to apply for the Homestead Exemption.</p>
+        </div>
+      </div>
+
       <p><img class="smile-image" src="~/assets/couple.jpg" align="right" width="250"/>Fulton County homeowners are entitled to a homestead tax exemption on their home property.</p>
 
       <p>To apply, you must own your home and it must have been your legal residence as of January 1 of this year. Additionally, you (and your spouse if you have one) may not claim a homestead exemption on any other property.</p>
@@ -27,7 +33,7 @@
 
       <p>This application takes less than 10 minutes to fill out.</p>
 
-      <a href="/verify"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
+      <a href="#"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
     </div>
   </section>
 </template>
