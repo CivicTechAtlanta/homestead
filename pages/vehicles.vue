@@ -20,7 +20,8 @@
         <div>
           <div class="usa-input-grid usa-input-grid-large">
             <p>Upload a picture or scanned copy of the vehicle's registration.</p>
-            <input name="vehicle-reg-1" type="file">
+            <input name="vehicle-reg-1" type="file" accept="image/*, application/pdf" @change="detectFiles1($event.target.files)">
+            <input name="vehicle-reg-1-url" type="hidden" v-model="vehicleReg1Url" />
           </div>
         </div>
       </fieldset>
@@ -37,7 +38,8 @@
         <div>
           <div class="usa-input-grid usa-input-grid-large">
             <p>Upload a picture or scanned copy of the vehicle's registration.</p>
-            <input name="vehicle-reg-2" type="file">
+            <input name="vehicle-reg-2" type="file" accept="image/*, application/pdf" @change="detectFiles2($event.target.files)">
+            <input name="vehicle-reg-2-url" type="hidden" v-model="vehicleReg2Url" />
           </div>
         </div>
       </fieldset>
@@ -48,11 +50,13 @@
 </template>
 
 <script>
-  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+  import { fillFields, saveFieldsAndNext, storage, uploadFile } from "~/lib/firebase"
 
   const fields = {
     'vehicleTag1': '',
-    'vehicleTag2': ''
+    'vehicleReg1Url': '',
+    'vehicleTag2': '',
+    'vehicleReg2Url': ''
   }
 
   export default {
@@ -66,6 +70,16 @@
       saveData() {
         const nextPage = '/documents'
         saveFieldsAndNext(fields, this, nextPage);
+      },
+      detectFiles1(fileList) {
+        Array.from(Array(fileList.length).keys()).map( x => {
+          uploadFile(fileList[x], 'vehicleReg1', 'vehicleReg1Url', this);
+        });
+      },
+      detectFiles2(fileList) {
+        Array.from(Array(fileList.length).keys()).map( x => {
+          uploadFile(fileList[x], 'vehicleReg2', 'vehicleReg2Url', this);
+        });
       }
     }
   }

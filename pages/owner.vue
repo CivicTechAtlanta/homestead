@@ -85,7 +85,8 @@
           </select>
 
         <p>Upload a picture or scanned copy of a state-issued identification card or driver's license.</p>
-        <input name="owner-id-upload" type="file">
+        <input name="owner-id-upload" type="file" accept="image/*, application/pdf" @change="detectFiles($event.target.files)">
+        <input name="owner-id-url" type="hidden" v-model="ownerIdUrl" />
         <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
@@ -93,7 +94,7 @@
 </template>
 
 <script>
-  import { fillFields, saveFieldsAndNext } from "~/lib/firebase"
+  import { fillFields, saveFieldsAndNext, storage, uploadFile } from "~/lib/firebase"
 
   const fields = {
     'ownerFirstName': '',
@@ -102,7 +103,8 @@
     'ownerEmail': '',
     'ownerPhone': '',
     'ownerState': 'GA',
-    'ownerSsn': ''
+    'ownerSsn': '',
+    'ownerIdUrl': ''
   }
 
   export default {
@@ -116,6 +118,11 @@
       saveData() {
         const nextPage = '/spouse'
         saveFieldsAndNext(fields, this, nextPage);
+      },
+      detectFiles(fileList) {
+        Array.from(Array(fileList.length).keys()).map( x => {
+          uploadFile(fileList[x], 'ownerId', 'ownerIdUrl', this);
+        });
       }
     }
   }
