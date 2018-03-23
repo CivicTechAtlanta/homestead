@@ -19,7 +19,8 @@ module.exports = {
     '@/node_modules/uswds/src/stylesheets/_all.scss'
   ],
   modules: [
-    'nuxt-sass-resources-loader'
+    'nuxt-sass-resources-loader',
+    ['@nuxtjs/google-analytics', {id: 'UA-116321306-1'}]
   ],
   sassResources: [
     resolve(__dirname, 'node_modules/uswds/src/stylesheets/lib/_bourbon.scss'),
