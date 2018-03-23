@@ -9,7 +9,18 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Fulton County Homestead Exemption Application' }
+      { hid: 'description', name: 'description', content: 'This free service is provided by Code for Atlanta and Atlanta Legal Aid Society.' },
+      { vmid: 'og:title', property: 'og:title', content: 'Fulton County Homestead Exemption Application'},
+      { vmid: 'og:description', property: 'og:description', content: 'This free service is provided by Code for Atlanta and Atlanta Legal Aid Society.'},
+      { vmid: 'og:type', property: 'og:type', content: 'website'},
+      { vmid: 'og:url', property: 'og:url', content: 'https://www.fultonhomestead.org'},
+      { vmid: 'og:image', property: 'og:image', content: 'https://www.fultonhomestead.org/share-image.jpg'},
+      { vmid: 'twitter:card', property: 'twitter:card', content: 'summary'},
+      { vmid: 'twitter:site', property: 'twitter:site', content: '@codeforatlanta'},
+      { vmid: 'twitter:title', property: 'twitter:title', content: 'Fulton County Homestead Exemption Application'},
+      { vmid: 'twitter:description', property: 'twitter:card', content: 'This free service is provided by Code for Atlanta and Atlanta Legal Aid Society.'},
+      { vmid: 'twitter:image', property: 'twitter:card', content: 'https://www.fultonhomestead.org/share-image.jpg'},
+      { vmid: 'twitter:image_alt', property: 'twitter:card', content: 'Screenshot of FultonHomestead.org'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
