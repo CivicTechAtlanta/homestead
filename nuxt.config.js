@@ -18,9 +18,9 @@ module.exports = {
       { vmid: 'twitter:card', property: 'twitter:card', content: 'summary'},
       { vmid: 'twitter:site', property: 'twitter:site', content: '@codeforatlanta'},
       { vmid: 'twitter:title', property: 'twitter:title', content: 'Fulton County Homestead Exemption Application'},
-      { vmid: 'twitter:description', property: 'twitter:card', content: 'This free service is provided by Code for Atlanta and Atlanta Legal Aid Society.'},
-      { vmid: 'twitter:image', property: 'twitter:card', content: 'https://www.fultonhomestead.org/share-image.jpg'},
-      { vmid: 'twitter:image_alt', property: 'twitter:card', content: 'Screenshot of FultonHomestead.org'}
+      { vmid: 'twitter:description', property: 'twitter:description', content: 'This free service is provided by Code for Atlanta and Atlanta Legal Aid Society.'},
+      { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.fultonhomestead.org/share-image.jpg'},
+      { vmid: 'twitter:image_alt', property: 'twitter:image_alt', content: 'Screenshot of FultonHomestead.org'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
