@@ -4,8 +4,6 @@
       <fieldset>
         <legend>Verify Your Homestead Exemption Status </legend>
 
-
-
         <div class="usa-alert usa-alert-info">
           <div class="usa-alert-body">
             <h3 class="usa-alert-heading"></h3>
@@ -18,8 +16,14 @@
 
         <ul class="usa-unstyled-list">
           <li>
-            <input id="truth" type="checkbox" name="historical-figures-1" value="truth" checked>
-            <label for="truth">I do not currently claim a homestead exemption on another property.</label>
+            <input id="verifyStatus" type="checkbox" name="verifyStatus" v-model="verifyStatus" v-validate="'required'" checked>
+            <label for="verifyStatus">I do not currently claim a homestead exemption on another property.</label>
+            <div class="usa-alert usa-alert-error" role="alert" v-show="errors.has('verifyStatus')">
+              <div class="usa-alert-body">
+                <h3 class="usa-alert-heading">You cannot proceed.</h3>
+                <p class="usa-alert-text">You can only claim a homestead exemption on one property.</p>
+              </div>
+            </div>
           </li>
         </ul>
 
@@ -31,6 +35,7 @@
 
 <script>
   import { auth, db, serverTimestamp } from "~/lib/firebase"
+
   const fields = {
     'verifyStatus': true
   }
@@ -47,18 +52,22 @@
     },
     methods: {
       saveData() {
-        const nextPage = '/parcel'
-        const userId = this.$cookie.get('userId');
-        let updatedFields = {
-          createdAt: serverTimestamp,
-          updatedAt: serverTimestamp
-        };
+        this.$validator.validateAll().then((result) => {
+          if (result) {
+            const nextPage = '/parcel'
+            const userId = this.$cookie.get('userId');
+            let updatedFields = {
+              createdAt: serverTimestamp,
+              updatedAt: serverTimestamp
+            };
 
-        db.collection('applications').doc(userId).set(updatedFields)
-          .then( (docRef) => {
-            window.location.href = nextPage;
-          });
-        }
+            db.collection('applications').doc(userId).set(updatedFields)
+              .then( (docRef) => {
+                window.location.href = nextPage;
+              });
+          }
+        });
+      }
     }
   }
 </script>

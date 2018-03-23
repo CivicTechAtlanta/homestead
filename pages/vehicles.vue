@@ -12,16 +12,17 @@
         <legend>Registered Vehicle #1</legend>
         <div>
           <div class="usa-input-grid usa-input-grid-small">
-            <label for="vehicle-tag-1">Tag Number</label>
-            <input class="usa-input-medium" id="vehicle-tag-1" name="vehicle-tag-1" v-model="vehicleTag1" type="text">
+            <label for="vehicleTag1">Tag Number</label>
+            <input class="usa-input-medium" id="vehicleTag1" name="vehicleTag1" type="text" v-model="vehicleTag1">
           </div>
         </div>
 
         <div>
           <div class="usa-input-grid usa-input-grid-large">
             <p>Upload a picture or scanned copy of the vehicle's registration.</p>
-            <input name="vehicle-reg-1" type="file" accept="image/*, application/pdf" @change="detectFiles1($event.target.files)">
-            <input name="vehicle-reg-1-url" type="hidden" v-model="vehicleReg1Url" />
+            <input accept="image/*, application/pdf" @change="detectFiles1($event.target.files)" name="vehicleReg1" type="file" v-validate="vehicleTag1.trim() !== '' ? 'required' : ''">
+            <input name="vehicleReg1Url" type="hidden" v-model="vehicleReg1Url" />
+            <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('vehicleReg1')">Uploaded file required.</span>
           </div>
         </div>
       </fieldset>
@@ -30,16 +31,17 @@
         <legend>Registered Vehicle #2</legend>
         <div>
           <div class="usa-input-grid usa-input-grid-small">
-            <label for="vehicle-tag-2">Tag Number</label>
-            <input class="usa-input-medium" id="vehicle-tag-2" name="vehicle-tag-2" v-model="vehicleTag2" type="text">
+            <label for="vehicleTag2">Tag Number</label>
+            <input class="usa-input-medium" id="vehicleTag2" name="vehicleTag2" type="text" v-model="vehicleTag2">
           </div>
         </div>
 
         <div>
           <div class="usa-input-grid usa-input-grid-large">
             <p>Upload a picture or scanned copy of the vehicle's registration.</p>
-            <input name="vehicle-reg-2" type="file" accept="image/*, application/pdf" @change="detectFiles2($event.target.files)">
-            <input name="vehicle-reg-2-url" type="hidden" v-model="vehicleReg2Url" />
+            <input accept="image/*, application/pdf" @change="detectFiles2($event.target.files)" name="vehicleReg2" type="file" v-validate="vehicleTag2.trim() !== '' ? 'required' : ''">
+            <input name="vehicleReg2Url" type="hidden" v-model="vehicleReg2Url" />
+            <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('vehicleReg2')">Uploaded file required.</span>
           </div>
         </div>
       </fieldset>

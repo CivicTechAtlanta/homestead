@@ -12,7 +12,7 @@
       <p>
         Here's what happens next:
         <ul>
-          <li>We've submitted your application to Fulton County.</li>
+          <li>We'll submit your application to Fulton County.</li>
           <li>If you provided an email address, you'll receive a PDF copy of your application.</li>
           <li>You may call Atlanta Legal Aid (404-524-5811) if you have any further questions.</li>
         </ul>

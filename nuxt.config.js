@@ -26,7 +26,8 @@ module.exports = {
     resolve(__dirname, 'node_modules/uswds/src/stylesheets/core/_variables.scss')
   ],
   plugins: [
-    { src: '~/plugins/vue-cookie', ssr: false }
+    { src: '~/plugins/vue-cookie', ssr: false },
+    { src: '~/plugins/vee-validate' }
   ],
   /*
   ** Customize the progress bar color
@@ -49,6 +50,6 @@ module.exports = {
         })
       }
     },
-    vendor: ['vue-cookie']
+    vendor: ['vue-cookie', 'vee-validate']
   }
 }

@@ -4,89 +4,96 @@
       <fieldset>
         <legend>Home Owner</legend>
         <p></p>
-        <label for="owner-first-name">First Name</label>
-        <input id="owner-first-name" name="owner-first-name" type="text" v-model="ownerFirstName" required="" aria-required="true">
+        <label for="ownerFirstName">First Name</label>
+        <input id="ownerFirstName" name="ownerFirstName" type="text" v-model="ownerFirstName" v-validate="'required'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerFirstName')">First Name is required.</span>
 
-        <label for="owner-middle-name" class="usa-input-optional">Middle Name</label>
-        <input id="owner-middle-name" name="owner-middle-name" v-model="ownerMiddleName" type="text">
+        <label for="ownerMiddleName" class="usa-input-optional">Middle Name</label>
+        <input id="ownerMiddleName" name="ownerMiddleName" type="text" v-model="ownerMiddleName">
 
-        <label for="owner-last-name">Last Name</label>
-        <input id="owner-last-name" name="owner-last-name" v-model="ownerLastName" type="text" required="" aria-required="true">
+        <label for="ownerLastName">Last Name</label>
+        <input id="ownerLastName" name="ownerLastName" type="text" v-model="ownerLastName" v-validate="'required'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerLastName')">Last Name is required.</span>
 
-        <label for="owner-email">Email Address</label>
-        <input id="owner-email" name="owner-email" v-model="ownerEmail" type="text" required="" aria-required="true">
+        <label for="ownerEmail">Email Address</label>
+        <input data-vv-delay="1000" id="ownerEmail" name="ownerEmail" v-model="ownerEmail" type="text" v-validate="'email'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerEmail')">Email must be valid.</span>
 
-        <label for="owner-phone">Phone Number</label>
-        <input id="owner-phone" name="owner-phone" v-model="ownerPhone" type="text" required="" aria-required="true">
 
-        <label for="owner-ssn">Last 4 Digits of Social Security Number</label>
-        <input class="usa-input-medium" id="owner-ssn" name="owner-ssn" v-model="ownerSsn" type="text" required="" aria-required="true" maxlength="4">
+        <label for="ownerPhone">Phone Number</label>
+        <input id="ownerPhone" name="ownerPhone" type="text" v-model="ownerPhone">
 
-          <label for="owner-state">Legal State of Residence</label>
-          <select id="owner-state" name="owner-state" v-model="ownerState">
-            <option value>- Select -</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA" selected="selected">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-            <option value="AA">AA - Armed Forces Americas</option>
-            <option value="AE">AE - Armed Forces Africa</option>
-            <option value="AE">AE - Armed Forces Canada</option>
-            <option value="AE">AE - Armed Forces Europe</option>
-            <option value="AE">AE - Armed Forces Middle East</option>
-            <option value="AP">AP - Armed Forces Pacific</option>
-          </select>
+        <label for="ownerSsn">Last 4 Digits of Social Security Number</label>
+        <input data-vv-delay="1000" class="usa-input-medium" id="ownerSsn" maxlength="4" name="ownerSsn" type="text" v-model="ownerSsn" v-validate="'required|digits:4'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerSsn')">Four digits required.</span>
+
+        <label for="ownerState">Legal State of Residence</label>
+        <select id="ownerState" name="ownerState" v-model="ownerState" v-validate="'required'">
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA" selected="selected">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+          <option value="AA">AA - Armed Forces Americas</option>
+          <option value="AE">AE - Armed Forces Africa</option>
+          <option value="AE">AE - Armed Forces Canada</option>
+          <option value="AE">AE - Armed Forces Europe</option>
+          <option value="AE">AE - Armed Forces Middle East</option>
+          <option value="AP">AP - Armed Forces Pacific</option>
+        </select>
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerState')">State must be selected.</span>
 
         <p>Upload a picture or scanned copy of a state-issued identification card or driver's license.</p>
-        <input name="owner-id-upload" type="file" accept="image/*, application/pdf" @change="detectFiles($event.target.files)">
+        <input @change="detectFiles($event.target.files)" name="ownerIdUpload" type="file" accept="image/*, application/pdf" v-validate="'required'">
         <input name="owner-id-url" type="hidden" v-model="ownerIdUrl" />
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerIdUpload')">Uploaded file required.</span>
+
         <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>

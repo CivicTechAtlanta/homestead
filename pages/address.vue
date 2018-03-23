@@ -1,26 +1,27 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" @submit.prevent="saveData">
+    <form autocomplete="off" class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Property Address</legend>
         <p class="description">Your home in Fulton County. You must have resided here on January 1 of this year.</p>
 
-        <label for="property-street-address-1">Street Address 1</label>
-        <input id="property-street-address-1" name="property-street-address-1" type="text" v-model="propertyStreetAddress1">
+        <label for="propertyStreetAddress1">Street Address 1</label>
+        <input id="propertyStreetAddress1" name="propertyStreetAddress1" type="text" v-model="propertyStreetAddress1" v-validate="'required'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('propertyStreetAddress1')">Street Address is required.</span>
 
-        <label for="property-street-address-2" class="usa-input-optional">Street Address 2</label>
-        <input id="property-street-address-2" name="property-street-address-2" type="text" v-model="propertyStreetAddress2">
+        <label for="propertyStreetAddress2" class="usa-input-optional">Street Address 2</label>
+        <input id="propertyStreetAddress2" name="propertyStreetAddress2" type="text" v-model="propertyStreetAddress2">
 
         <div>
           <div class="usa-input-grid usa-input-grid-medium">
-            <label for="property-city">City</label>
-            <input id="property-city" name="property-city" type="text" v-model="propertyCity">
+            <label for="propertyCity">City</label>
+            <input id="propertyCity" name="propertyCity" type="text" v-model="propertyCity" v-validate="'required'">
+            <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('propertyCity')">City is required.</span>
           </div>
 
           <div class="usa-input-grid usa-input-grid-small">
-            <label for="property-state">State</label>
-            <select id="property-state" name="property-state" v-model="propertyState">
-              <option value>- Select -</option>
+            <label for="propertyState">State</label>
+            <select id="propertyState" name="propertyState" v-model="propertyState" v-validate="'required'">
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -79,13 +80,19 @@
               <option value="AE">AE - Armed Forces Middle East</option>
               <option value="AP">AP - Armed Forces Pacific</option>
             </select>
+            <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('propertyState')">State is required.</span>
           </div>
         </div>
 
-        <label for="property-zip">ZIP Code</label>
-        <input class="usa-input-medium" id="property-zip" name="property-zip" type="text" v-model="propertyZip" pattern="[\d]{5}(-[\d]{4})?">
+        <div>
+          <div class="usa-input-grid usa-input-grid-large">
+            <label for="propertyZip">ZIP Code</label>
+            <input class="usa-input-medium" id="propertyZip" name="propertyZip" type="text" v-model="propertyZip" v-validate="'required'">
+            <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('propertyZip')">ZIP Code is required.</span>
+          </div>
+        </div>
 
-        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <button id="next" class="usa-button-big button-forward" type="submit">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>

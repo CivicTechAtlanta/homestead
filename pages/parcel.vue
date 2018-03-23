@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <form class="usa-form-large" @submit.prevent="saveData">
+    <form autocomplete="off" class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Find Your Parcel Number</legend>
         <p>Your home's parcel number is set by Fulton County and is usually 14 digits long.</p>
@@ -17,8 +17,9 @@
             </p>
           </div>
         </div>
-        <label for="parcel-number">Parcel Number</label>
-        <input id="parcel-number" name="parcel-number" type="text" v-model="parcelNumber">
+        <label for="parcelNumber">Parcel Number</label>
+        <input id="parcelNumber" name="parcelNumber" type="text" v-model="parcelNumber" v-validate="'required'">
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('parcelNumber')">Parcel number is required.</span>
 
         <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
