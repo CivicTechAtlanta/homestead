@@ -3,7 +3,7 @@
     <form class="usa-form-large" @submit.prevent="saveData">
       <fieldset>
         <legend>Home Owner</legend>
-        <p></p>
+
         <label for="ownerFirstName">First Name</label>
         <input id="ownerFirstName" name="ownerFirstName" type="text" v-model="ownerFirstName" v-validate="'required'">
         <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerFirstName')">First Name is required.</span>
@@ -19,9 +19,28 @@
         <input data-vv-delay="1000" id="ownerEmail" name="ownerEmail" v-model="ownerEmail" type="text" v-validate="'email'">
         <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerEmail')">Email must be valid.</span>
 
-
         <label for="ownerPhone">Phone Number</label>
         <input id="ownerPhone" name="ownerPhone" type="text" v-model="ownerPhone">
+
+        <fieldset>
+          <legend class="sublegend">Date of Birth</legend>
+          <span class="usa-form-hint" id="dobHint">For example: 12 12 1972</span>
+          <div class="usa-date-of-birth">
+            <div class="usa-form-group usa-form-group-month">
+              <label for="ownerBirthMonth">Month</label>
+              <input aria-describedby="dobHint" class="usa-input-inline" id="ownerBirthMonth" name="ownerBirthMonth" type="number" v-model="ownerBirthMonth" v-validate="'required|between:1,12'">
+            </div>
+            <div class="usa-form-group usa-form-group-day">
+              <label for="ownerBirthDay">Day</label>
+              <input aria-describedby="dobHint" class="usa-input-inline" id="ownerBirthDay" name="ownerBirthDay" type="number" v-model="ownerBirthDay" v-validate="'required|between:1,31'">
+            </div>
+            <div class="usa-form-group usa-form-group-year">
+              <label for="ownerBirthYear">Year</label>
+              <input class="usa-input-inline" aria-describedby="dobHint" id="ownerBirthYear" name="ownerBirthYear" type="number" v-model="ownerBirthYear" v-validate="'required|between:1890,2010'">
+            </div>
+          </div>
+        </fieldset>
+        <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerBirthMonth') || errors.has('ownerBirthDay') || errors.has('ownerBirthYear')">Valid Date of Birth is required.</span>
 
         <label for="ownerSsn">Last 4 Digits of Social Security Number</label>
         <input data-vv-delay="1000" class="usa-input-medium" id="ownerSsn" maxlength="4" name="ownerSsn" type="text" v-model="ownerSsn" v-validate="'required|digits:4'">
@@ -110,6 +129,9 @@
     'ownerEmail': '',
     'ownerPhone': '',
     'ownerState': 'GA',
+    'ownerBirthDay': '',
+    'ownerBirthMonth': '',
+    'ownerBirthYear': '',
     'ownerSsn': '',
     'ownerIdUrl': ''
   }
@@ -136,5 +158,8 @@
 </script>
 
 <style>
-
+  legend.sublegend {
+    font-size: 1.8rem;
+    font-weight: normal;
+  }
 </style>
