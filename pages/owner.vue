@@ -110,10 +110,10 @@
 
         <p>Upload a picture or scanned copy of a state-issued identification card or driver's license.</p>
         <input @change="detectFiles($event.target.files)" name="ownerIdUpload" type="file" accept="image/*, application/pdf" v-validate="'required'">
-        <input name="owner-id-url" type="hidden" v-model="ownerIdUrl" />
+        <input name="owner-id-url" type="hidden" v-model="ownerIdUrl">
         <span class="usa-input-error-message" id="input-error-message" role="alert" v-show="errors.has('ownerIdUpload')">Uploaded file required.</span>
 
-        <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+        <button :disabled='disableSubmit' id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
       </fieldset>
     </form>
   </section>
@@ -138,10 +138,18 @@
 
   export default {
     data() {
-      return fields;
+      const pageOnlyFields = {
+        'uploadInProgress': false
+      };
+      return Object.assign(pageOnlyFields, fields);
     },
     mounted() {
       fillFields(fields, this);
+    },
+    computed: {
+      disableSubmit() {
+        return this.uploadInProgress;
+      }
     },
     methods: {
       saveData() {

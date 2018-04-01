@@ -46,7 +46,7 @@
         </div>
       </fieldset>
 
-      <button id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
+      <button :disabled='disableSubmit' id="next" class="usa-button-big button-forward">Next &rightarrow;</button>
     </form>
   </section>
 </template>
@@ -63,10 +63,18 @@
 
   export default {
     data() {
-      return fields;
+      const pageOnlyFields = {
+        'uploadInProgress': false
+      };
+      return Object.assign(pageOnlyFields, fields);
     },
     mounted() {
       fillFields(fields, this);
+    },
+    computed: {
+      disableSubmit() {
+        return this.uploadInProgress;
+      }
     },
     methods: {
       saveData() {
