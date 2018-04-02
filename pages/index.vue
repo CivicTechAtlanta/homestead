@@ -25,9 +25,16 @@
         <strong>Please take a moment to gather your documents.</strong> If you're on a phone or tablet, you can take a clear photo of each document.
       </p>
 
-      <p>This application takes less than 10 minutes to fill out.</p>
+      <p>This application takes about 10 minutes to fill out.</p>
 
-      <a href="/verify"><button class="usa-button-big button-forward">Get Started &rightarrow;</button></a>
+      <div class="usa-alert usa-alert-error" >
+        <div class="usa-alert-body">
+          <h3 class="usa-alert-heading">Applications for 2018 are now closed</h3>
+          <p class="usa-alert-text">We'll be back later in the year to accept 2019 applications.</p>
+        </div>
+      </div>
+
+      <a href="/verify"><button class="usa-button-big button-forward" disabled>Get Started &rightarrow;</button></a>
     </div>
   </section>
 </template>
